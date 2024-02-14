@@ -11,7 +11,6 @@ from .utils import *
 def process_data(request):
 
     data_list = request.data.get('dataset', [])
-    print(data_list[0])
     
     processed_data = analyze(data_list)
 

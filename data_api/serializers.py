@@ -1,7 +1,10 @@
 from rest_framework import serializers
-from .models import Person
+from .models import Data
 
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Person
+        model = Data
         fields = '__all__'
+
+class BatchDataSerializer(serializers.ListSerializer):
+    child = DataSerializer()

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import DataCreateView
+from .views import process_data
 
 urlpatterns = [
-    path('data/', DataCreateView.as_view(), name='data-create'),
+    path('data/', process_data, name='data-create'),
 ]

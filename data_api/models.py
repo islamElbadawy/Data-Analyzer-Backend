@@ -1,9 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class Person(models.Model):
-    name = models.CharField(max_length=255)
-    age = models.IntegerField()
-    country = models.CharField(max_length=255)
-    salary = models.IntegerField()
-    department = models.CharField(max_length=255)
+class Data(models.Model):
+    Index = models.IntegerField()
+    OrganizationId = models.CharField(max_length=255)
+    Name = models.CharField(max_length=255)
+    Website = models.URLField()
+    Country = models.CharField(max_length=255)
+    Description = models.TextField()
+    Founded = models.IntegerField()
+    Industry = models.CharField(max_length=255)
+    NumberOfEmployees = models.IntegerField()

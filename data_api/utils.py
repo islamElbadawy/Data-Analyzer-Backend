@@ -5,22 +5,27 @@ def analyze(data_list):
     # Create a Pandas DataFrame from the data
     df = pd.DataFrame(data_list)
 
+    # Drop unnecessary columns if needed
+    df = df.drop(["Reference USEEIO Code"], axis=1, errors='ignore')
 
-    # Convert columns to appropriate data types
-    df["Founded"] = df["Founded"].astype(int)
-    df["Number of employees"] = df["Number of employees"].astype(int)
+    # Convert numeric columns to appropriate data types
+    numeric_columns = ["Supply Chain Emission Factors without Margins", 
+                        "Margins of Supply Chain Emission Factors", 
+                        "Supply Chain Emission Factors with Margins"]
 
-    # Descriptive statistics
-    stats = df.describe()
+    df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
 
-    # Correlation matrix
-    # correlation_matrix = df.corr()
+    # Descriptive statistics for numeric columns
+    numeric_stats = df[numeric_columns].describe()
 
-    # Group by Country and calculate mean Number of employees
-    average_employees_by_country = df.groupby("Country")["Number of employees"].mean()
+    # Correlation matrix for numeric columns
+    correlation_matrix = df[numeric_columns].corr()
+
+    # Group by NAICS Title and calculate mean of numeric columns
+    averages_by_title = df.groupby("2017 NAICS Title")[numeric_columns].mean()
 
     return {
-        'descriptive_statistics': stats.to_dict(),
-        # 'correlation_matrix': correlation_matrix.to_dict(),
-        'average_employees_by_country': average_employees_by_country.to_dict()
+        'numeric_statistics': numeric_stats.to_dict(),
+        'correlation_matrix': correlation_matrix.to_dict(),
+        'averages_by_title': averages_by_title.to_dict()
     }

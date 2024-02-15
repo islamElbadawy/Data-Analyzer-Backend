@@ -62,8 +62,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-    "https://your-angular-app-domain.com",
+    "http://localhost:4200/",
+    "https://data-analyzer-frontend.vercel.app/",
 ]
 
 ROOT_URLCONF = 'data_analyzer.urls'

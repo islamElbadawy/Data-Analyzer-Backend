@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
-    'data_api',
-
+    'data_api'
 ]
 
 MIDDLEWARE = [
@@ -58,12 +56,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200/",
-    "https://data-analyzer-frontend.vercel.app/",
 ]
 
 ROOT_URLCONF = 'data_analyzer.urls'
